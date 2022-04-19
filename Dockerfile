@@ -1,5 +1,5 @@
 FROM rocker/tidyverse
-MAINTAINER Marc A. Suchard <msuchard@ucla.edu>
+MAINTAINER Cepobia <developer@cepobia.com>
 
 RUN apt-get update && apt-get install -y python-dev openjdk-8-jdk liblzma-dev libbz2-dev \
 && R CMD javareconf
@@ -16,19 +16,19 @@ RUN install2.r \
 
 ## Install OHDSI R packages
 RUN installGithub.r \
-	OHDSI/SqlRender \
-	OHDSI/DatabaseConnector \
-	OHDSI/OhdsiRTools \
-	OHDSI/Achilles \
-	OHDSI/Cyclops \
-	OHDSI/FeatureExtraction \
-	OHDSI/BigKnn \
-	OHDSI/PatientLevelPrediction \
-	OHDSI/CohortMethod \
-	OHDSI/PublicOracle \
+	quinterpriest/SqlRender \
+	quinterpriest/DatabaseConnector \
+	quinterpriest/OhdsiRTools \
+	quinterpriest/Achilles \
+	quinterpriest/Cyclops \
+	quinterpriest/FeatureExtraction \
+	quinterpriest/BigKnn \
+	quinterpriest/PatientLevelPrediction \
+	quinterpriest/CohortMethod \
+	quinterpriest/PublicOracle \
 	hadley/xml2 \
 	cloudyr/aws.s3 \
-	OHDSI/OhdsiSharing \
+	quinterpriest/OhdsiSharing \
 && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
 
 COPY Rserv.conf /etc/Rserv.conf
